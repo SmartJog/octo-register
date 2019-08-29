@@ -1,0 +1,7 @@
+galaxy_info:
+  author: Vincent Moittié
+  description: Ansible role to register a new deployment on Octo-spy.
+  license: Arkena
+  min_ansible_version: 2.7
+  dependencies: []
+
