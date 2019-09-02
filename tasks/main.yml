@@ -16,7 +16,7 @@
   uri:
     url: "{{ octo_spy_host }}/project"
     method: POST
-    body: "{\"name\":\"{{ project_name  }}\"}"
+    body: "{\"name\":\"{{ project_name }}\"}"
     body_format: json
     status_code: 201
   when: result.json.message == "Field value is bad." and result.json.field == "project"
