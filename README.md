@@ -12,4 +12,7 @@ When you call this role in a playbook, you need to specify these variables:
 
 * *project_name*: Name of project in octo-spy, example: "harmony"
 * *project_version*: Version of project in octo-spy, example: "v1.0.0"
-
+* *project_environment*: Environment of project in octo-spy, valid values: "Development", "QA", "Integration", "Pre-production" and "Production"
+  Project environment is optional, the default value is "Development".
+* *project_client*: Client of project in octo-spy.
+  Project client is optional, the default value is "Internal".
