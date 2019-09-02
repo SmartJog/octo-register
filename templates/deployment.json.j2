@@ -1,7 +1,7 @@
 {
-  "environment": "{{ platform_environment | default("Development") }}",
+  "environment": "{{ project_environment | default("Development") }}",
   "project": "{{ project_name }}",
   "version": "{{ project_version }}",
-  "client": "{{ platform_customer | default("Internal") }}",
+  "client": "{{ project_client | default("Internal") }}",
   "alive": true
 }
