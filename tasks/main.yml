@@ -7,10 +7,11 @@
     url: "{{ octo_spy_host }}/deployment"
     method: POST
     body: "{{ lookup('template', './deployment.json.j2') }}"
-    status_code: 201,400
+    status_code: 201,400,404
     body_format: json
     return_content: yes
   register: result
+  when: step == "start"
 
 - name: Register project on octo-spy
   uri:
@@ -19,7 +20,7 @@
     body: "{\"name\":\"{{ project_name }}\"}"
     body_format: json
     status_code: 201
-  when: result.status == 400 and result.json.message == "Field value is bad." and result.json.field == "project"
+  when: step == "start" and result.status == 404 and result.json.field == "project"
 
 - name: Register deployment with new register project on octo-spy
   uri:
@@ -28,4 +29,14 @@
     body: "{{ lookup('template', './deployment.json.j2') }}"
     status_code: 201
     body_format: json
-  when: result.status == 400 and result.json.message == "Field value is bad." and result.json.field == "project"
+  when: step == "start" and result.status == 404 and result.json.field == "project"
+
+- name: Delete progress of deployment
+  uri:
+    url: "{{ octo_spy_host }}/deployment/progress"
+    method: DELETE
+    body: "{{ lookup('template', './progress.json.j2') }}"
+    status_code: 204
+    body_format: json
+  when: step == "end"
+
