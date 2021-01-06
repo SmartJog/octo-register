@@ -2,6 +2,12 @@
 
 Register deployment on octo-spy.
 
+## Usage
+
+There are two usages of this roles, defined by variables *step*, possibles steps are:
+* "start": Register deployment.
+* "end": Delete progress of registered deployment. Call it only if step init has been called and variable *project_progress* has been set to true.
+
 ## Role variables
 
 To use octo-register, you need to provide this inventory variable:
@@ -16,3 +22,4 @@ When you call this role in a playbook, you need to specify these variables:
   Project environment is optional, the default value is "Development".
 * *project_client*: Client of project in octo-spy.
   Project client is optional, the default value is "Internal".
+* *project_progress*: Set progress of deployment, the default value is true.
