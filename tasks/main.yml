@@ -5,6 +5,8 @@
 - name: Register deployment
   uri:
     url: "{{ octo_spy_host }}/deployment"
+    url_username: "{{ octo_username }}"
+    url_password: "{{ octo_password }}"
     method: POST
     body: "{{ lookup('template', './deployment.json.j2') }}"
     status_code: 201,400,404
@@ -16,6 +18,8 @@
 - name: Register project on octo-spy
   uri:
     url: "{{ octo_spy_host }}/project"
+    url_username: "{{ octo_username }}"
+    url_password: "{{ octo_password }}"
     method: POST
     body: "{\"name\":\"{{ project_name }}\"}"
     body_format: json
@@ -25,6 +29,8 @@
 - name: Register deployment with new register project on octo-spy
   uri:
     url: "{{ octo_spy_host }}/deployment"
+    url_username: "{{ octo_username }}"
+    url_password: "{{ octo_password }}"
     method: POST
     body: "{{ lookup('template', './deployment.json.j2') }}"
     status_code: 201
@@ -34,6 +40,8 @@
 - name: Delete progress of deployment
   uri:
     url: "{{ octo_spy_host }}/deployment/progress"
+    url_username: "{{ octo_username }}"
+    url_password: "{{ octo_password }}"
     method: DELETE
     body: "{{ lookup('template', './progress.json.j2') }}"
     status_code: 204
