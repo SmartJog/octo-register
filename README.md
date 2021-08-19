@@ -13,6 +13,8 @@ There are two usages of this roles, defined by variables *step*, possibles steps
 To use octo-register, you need to provide this inventory variable:
 
 * *octo_spy_host*: Complete URL of octo-spy API, example with local api: http://localhost:8080/octo-spy/api
+* *octo_username*: Username for the octo-spy API
+* *octo_password*: Password for the octo-spy API
 
 When you call this role in a playbook, you need to specify these variables:
 
