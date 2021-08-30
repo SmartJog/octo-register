@@ -7,6 +7,7 @@
     url: "{{ octo_spy_host }}/deployment"
     url_username: "{{ octo_username }}"
     url_password: "{{ octo_password }}"
+    force_basic_auth: yes
     method: POST
     body: "{{ lookup('template', './deployment.json.j2') }}"
     status_code: 201,400,404
@@ -20,6 +21,7 @@
     url: "{{ octo_spy_host }}/project"
     url_username: "{{ octo_username }}"
     url_password: "{{ octo_password }}"
+    force_basic_auth: yes
     method: POST
     body: "{\"name\":\"{{ project_name }}\"}"
     body_format: json
@@ -31,6 +33,7 @@
     url: "{{ octo_spy_host }}/deployment"
     url_username: "{{ octo_username }}"
     url_password: "{{ octo_password }}"
+    force_basic_auth: yes
     method: POST
     body: "{{ lookup('template', './deployment.json.j2') }}"
     status_code: 201
@@ -42,6 +45,7 @@
     url: "{{ octo_spy_host }}/deployment/progress"
     url_username: "{{ octo_username }}"
     url_password: "{{ octo_password }}"
+    force_basic_auth: yes
     method: DELETE
     body: "{{ lookup('template', './progress.json.j2') }}"
     status_code: 204
