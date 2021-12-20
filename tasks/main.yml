@@ -4,7 +4,7 @@
 
 - name: Register deployment
   uri:
-    url: "{{ octo_spy_host }}/deployment"
+    url: "{{ octo_spy_host }}/deployments"
     url_username: "{{ octo_username }}"
     url_password: "{{ octo_password }}"
     force_basic_auth: yes
@@ -18,7 +18,7 @@
 
 - name: Register project on octo-spy
   uri:
-    url: "{{ octo_spy_host }}/project"
+    url: "{{ octo_spy_host }}/projects"
     url_username: "{{ octo_username }}"
     url_password: "{{ octo_password }}"
     force_basic_auth: yes
@@ -30,7 +30,7 @@
 
 - name: Register deployment with new register project on octo-spy
   uri:
-    url: "{{ octo_spy_host }}/deployment"
+    url: "{{ octo_spy_host }}/deployments"
     url_username: "{{ octo_username }}"
     url_password: "{{ octo_password }}"
     force_basic_auth: yes
@@ -42,7 +42,7 @@
 
 - name: Delete progress of deployment
   uri:
-    url: "{{ octo_spy_host }}/deployment/progress"
+    url: "{{ octo_spy_host }}/deployments/progress"
     url_username: "{{ octo_username }}"
     url_password: "{{ octo_password }}"
     force_basic_auth: yes
