@@ -42,13 +42,11 @@
 
 - name: Delete progress of deployment
   uri:
-    url: "{{ octo_spy_host }}/deployments/progress"
+    url: "{{ octo_spy_host }}/deployments/progress?environment={{ project_environment | default('Development') }}&project={{ project_name }}&version={{ project_version }}&client={{ project_client | default('Internal') }}&alive=true"
     url_username: "{{ octo_username }}"
     url_password: "{{ octo_password }}"
     force_basic_auth: yes
     method: DELETE
-    body: "{{ lookup('template', './progress.json.j2') }}"
     status_code: 204
-    body_format: json
   when: step == "end"
 
