@@ -23,10 +23,10 @@
     url_password: "{{ octo_password }}"
     force_basic_auth: yes
     method: POST
-    body: "{\"name\":\"{{ project_name }}\"}"
+    body: "{\"name\":\"{{ project_name }}\", \"isMaster\": true}"
     body_format: json
     status_code: 201
-  when: step == "start" and result.status == 404 and result.json.field == "project"
+  when: step == "start" and (result.status == 404 or result.status == 400) and result.json.field == "project"
 
 - name: Register deployment with new register project on octo-spy
   uri:
@@ -38,7 +38,7 @@
     body: "{{ lookup('template', './deployment.json.j2') }}"
     status_code: 201
     body_format: json
-  when: step == "start" and result.status == 404 and result.json.field == "project"
+  when: step == "start" and (result.status == 404 or result.status == 400) and result.json.field == "project"
 
 - name: Delete progress of deployment
   uri:
